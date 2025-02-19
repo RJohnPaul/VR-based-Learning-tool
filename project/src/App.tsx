@@ -17,7 +17,7 @@ const isAuthenticated = () => {
 };
 
 const PrivateRoute = ({ element }: { element: React.ReactNode }) => {
-  return isAuthenticated() ? element : <Navigate to="/login" replace />;
+  return isAuthenticated() ? element : <Login />;
 };
 
 function App() {

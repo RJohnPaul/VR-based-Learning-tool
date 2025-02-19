@@ -33,7 +33,7 @@ app.use(passport.session());
 app.use(cookieParser());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/vr-learning-tool')
+mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://prithvie1611:xhgCdDz7oPejSYku@cluster0.rhe97.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/vr-learning-tool')
   .then(() => console.log('✅ MongoDB connected'))
   .catch(err => console.error('❌ MongoDB connection error:', err));
 

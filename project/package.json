@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "concurrently \"vite\" \"cd backend && ts-node server.ts\"",
-    "build": "tsc -b && vite build",
+    "build": "vite build && tsc -p backend/tsconfig.json",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -53,9 +53,8 @@
     "@types/mongoose": "^5.11.96",
     "@types/node": "^22.13.0",
     "@types/react": "^19.0.8",
-    "@types/react-bootstrap": "^0.32.37",
     "@types/react-dom": "^19.0.3",
-    "@types/react-toastify": "^4.0.2",
+    "@types/react-toastify": "^4.1.0",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.17",
     "eslint": "^9.19.0",
