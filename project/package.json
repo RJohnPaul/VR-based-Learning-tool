@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "concurrently \"vite\" \"cd backend && ts-node server.ts\"",
-    "build": "vite build && tsc -p backend/tsconfig.json",
+    "build": "vite build && tsc -p src/backend/tsconfig.json",
     "lint": "eslint .",
     "preview": "vite preview"
   },

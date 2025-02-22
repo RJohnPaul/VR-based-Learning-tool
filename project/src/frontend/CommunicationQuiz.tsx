@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
-import "../styles/communicationQuizStyles.css";
+import "../styles/CommunicationQuizStyles.css";
 import { submitScore } from '../utils/submitScore';
 import useAuth from "../utils/UseAuth";
 
