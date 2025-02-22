@@ -1,9 +1,9 @@
-import express, { Request, Response } from "express";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-import User from "./models/UserSchema";
-import dotenv from "dotenv";
-import cookieParser from "cookie-parser";
+const express = require("express");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
+const User = require("./models/UserSchema");
 
 dotenv.config();
 
@@ -19,7 +19,7 @@ const COOKIE_OPTIONS = {
 
 router.use(cookieParser());
 
-router.post("/login", async (req: Request, res: Response): Promise<any> => {
+router.post("/login", async (req: { body: { email: any; password: any; }; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: { error?: string; message?: string; token?: any; user?: { email: any; userId: any; }; }): any; new(): any; }; }; cookie: (arg0: string, arg1: any, arg2: { httpOnly: boolean; secure: boolean; sameSite: "strict"; maxAge: number; }) => void; }) => {
   const { email, password } = req.body;
 
   try {
@@ -41,19 +41,16 @@ router.post("/login", async (req: Request, res: Response): Promise<any> => {
       return res.status(400).json({ error: "Invalid email or password" });
     }
 
-    // Generate JWT token
     const token = jwt.sign({ userId: user._id, email: user.email }, JWT_SECRET, {
       expiresIn: "1d",
     });
 
-    // Set token as an HTTP-only cookie
     res.cookie("token", token, COOKIE_OPTIONS);
 
-    // Return token in response body for frontend use
     return res.status(200).json({
       message: "Login successful",
-      token, // Now the frontend can store it
-      user: { email: user.email, userId: user._id }, // Optional user data
+      token,
+      user: { email: user.email, userId: user._id },
     });
   } catch (error) {
     console.error("Error logging in:", error);
@@ -61,7 +58,7 @@ router.post("/login", async (req: Request, res: Response): Promise<any> => {
   }
 });
 
-router.post("/logout", (req: Request, res: Response) => {
+router.post("/logout", (req: any, res: { clearCookie: (arg0: string, arg1: { httpOnly: boolean; secure: boolean; sameSite: "strict"; maxAge: number; }) => void; status: (arg0: number) => { (): any; new(): any; json: { (arg0: { message: string; }): void; new(): any; }; }; }) => {
   res.clearCookie("token", COOKIE_OPTIONS);
   res.status(200).json({ message: "Logout successful" });
 });
