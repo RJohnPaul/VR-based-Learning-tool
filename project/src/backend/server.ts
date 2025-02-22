@@ -1,16 +1,16 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
-import cors from 'cors';
-import session from 'express-session';
-import passport from 'passport';
-import loginRoute from './Login';
-import signupRoute from './SignUp';
-import passportRoute from './Passport';
-import meRoute from './auth'
-import profileRoute from './Profile'
-import cookieParser from 'cookie-parser';
-import scoreRoutes from './scores'
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const session = require('express-session');
+const passport = require('passport');
+const loginRoute = require('./Login');
+const signupRoute = require('./SignUp');
+const passportRoute = require('./Passport');
+const meRoute = require('./auth');
+const profileRoute = require('./Profile');
+const cookieParser = require('cookie-parser');
+const scoreRoutes = require('./scores');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -35,13 +35,13 @@ app.use(bodyParser.json());
 
 mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://prithvie1611:xhgCdDz7oPejSYku@cluster0.rhe97.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/vr-learning-tool')
   .then(() => console.log('✅ MongoDB connected'))
-  .catch(err => console.error('❌ MongoDB connection error:', err));
+  .catch((err: any) => console.error('❌ MongoDB connection error:', err));
 
 app.use('/api', signupRoute);
 app.use('/api', loginRoute);
 app.use('/api', passportRoute);
-app.use('/api', meRoute)
-app.use('/api', profileRoute)
+app.use('/api', meRoute);
+app.use('/api', profileRoute);
 app.use("/api", scoreRoutes);
 
 app.listen(PORT, () => {

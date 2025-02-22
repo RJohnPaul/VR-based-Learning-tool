@@ -1,15 +1,15 @@
 import express, { Request, Response } from 'express';
-import jwt from 'jsonwebtoken';
+import * as jwt from 'jsonwebtoken';
 import User from './models/UserSchema';
-import dotenv from 'dotenv';
-import cookieParser from 'cookie-parser';
+import * as  dotenv from 'dotenv';
+import * as cookieParser from 'cookie-parser';
 
 dotenv.config();
 
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET || 'secret';
 
-router.use(cookieParser());
+router.use(cookieParser.default());
 
 router.get('/current-user', async (req: Request, res: Response): Promise<any> => {
     const token = req.cookies.token;

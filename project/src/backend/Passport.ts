@@ -1,9 +1,9 @@
-import passport from 'passport';
+import * as passport from 'passport';
 import { Router } from 'express';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import User from './models/UserSchema';
-import dotenv from 'dotenv';
-import jwt from 'jsonwebtoken';
+import * as  dotenv from 'dotenv';
+import * as jwt from 'jsonwebtoken';
 
 dotenv.config();
 
