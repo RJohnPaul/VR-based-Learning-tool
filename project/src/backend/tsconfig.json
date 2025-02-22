@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES6",
-    "module": "commonjs",
-    "outDir": "./dist",
-    "rootDir": "./",
-    "strict": true,
-    "esModuleInterop": true, // Ensure this flag is set to true
-    "skipLibCheck": true // Optional: This can help avoid type checking issues with third-party libraries
-  },
+  "target": "ES6",
+  "module": "commonjs",
+  "moduleResolution": "node",
+  "outDir": "./dist",
+  "rootDir": "./",
+  "strict": true,
+  "esModuleInterop": true,
+  "skipLibCheck": true
+},
   "include": ["./**/*.ts", "session.d.ts"],
   "exclude": ["node_modules"]
 }

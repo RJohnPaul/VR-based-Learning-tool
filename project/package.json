@@ -7,7 +7,7 @@
     "build": "vite build && tsc -p src/backend/tsconfig.json",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "cd src && node --max-old-space-size=4096 -r ts-node/register backend/server.ts"
+    "start": "cd src && node --max-old-space-size=4096 -r ts-node/register -r tsconfig-paths/register backend/server.ts"
   },
   "dependencies": {
     "@mui/icons-material": "^6.4.3",
