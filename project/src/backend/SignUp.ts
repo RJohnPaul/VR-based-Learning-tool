@@ -31,4 +31,4 @@ router.post('/signup', async (req: { body: { firstName: any; lastName: any; emai
   }
 });
 
-module.exports = router;
+export default router;
